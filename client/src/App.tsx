@@ -4,7 +4,7 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import EnterpriseWorkspace, { Access, MarketingSite, type Role } from "./pages/EnterpriseWorkspace";
+import EnterpriseWorkspace, { Access, MarketingSite, PublishedView, type Role } from "./pages/EnterpriseWorkspace";
 import { useState } from "react";
 
 function AppRoutes() {
@@ -12,6 +12,7 @@ function AppRoutes() {
   return <Switch>
     <Route path="/marketing" component={MarketingSite} />
     <Route path="/access" component={Access} />
+    <Route path="/published/:slug" component={PublishedView} />
     <Route path="/404" component={NotFound} />
     <Route>
       <EnterpriseWorkspace role={role} setRole={setRole} />

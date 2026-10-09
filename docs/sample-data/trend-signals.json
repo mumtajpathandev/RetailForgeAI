@@ -1,0 +1,9 @@
+{
+  "tenant": "Northstar Athletics",
+  "season": "Spring 2027",
+  "signals": [
+    {"trend":"Sculpted utility","category":"Women's active","socialMomentum":94,"searchIntent":88,"competitorActivity":86,"brandFit":92,"sourcingFeasibility":81,"lifecycle":"Accelerating","evidence":"Creator adoption is spreading from performance communities into urban lifestyle content."},
+    {"trend":"Soft performance tailoring","category":"Premium apparel","socialMomentum":81,"searchIntent":85,"competitorActivity":79,"brandFit":89,"sourcingFeasibility":76,"lifecycle":"Emerging","evidence":"Search demand is increasing for polished performance layers with low-logo styling."},
+    {"trend":"Neo-clay neutrals","category":"Color story","socialMomentum":76,"searchIntent":82,"competitorActivity":84,"brandFit":78,"sourcingFeasibility":91,"lifecycle":"Mainstream","evidence":"Color adoption is visible across competitor assortments and regional search demand."}
+  ]
+}

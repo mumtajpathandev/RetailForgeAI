@@ -1,0 +1,7 @@
+sku,product_name,category,season,channel,region,unit_cost,retail_price,units_sold,units_returned,inventory_on_hand,return_rate,top_return_reason
+RF-1001,Contour Knit Legging,Women's Active,Spring 2027,DTC,US,22.40,98.00,18420,3390,4820,0.184,Waistband compression
+RF-1002,AeroFlex Recovery Hoodie,Performance Apparel,Spring 2027,DTC,US,31.60,128.00,12100,1428,3100,0.118,Color differs from photos
+RF-1003,Terrain Run Shell,Outdoor,Spring 2027,Wholesale,US,48.20,178.00,8200,795,1920,0.097,Waterproofing expectation
+RF-1004,Pulse Court Short,Training,Spring 2027,DTC,US,15.10,68.00,15100,634,6400,0.042,Size exchange
+RF-1005,Studio Rib Tank,Women's Active,Spring 2027,DTC,EU,12.80,58.00,9800,510,3600,0.052,Fit preference
+RF-1006,Axis Trail Sneaker,Footwear,Spring 2027,DTC,US,54.00,178.00,6400,448,1100,0.070,Heel fit

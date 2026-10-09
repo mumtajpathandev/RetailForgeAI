@@ -1,0 +1,7 @@
+return_id,sku,order_date,return_date,channel,region,size,reason,customer_note,refund_amount
+RET-0001,RF-1001,2026-09-01,2026-09-08,DTC,US,M,fit,Waistband feels too tight during movement,98.00
+RET-0002,RF-1001,2026-09-03,2026-09-11,DTC,US,L,fit,Compression is stronger than expected,98.00
+RET-0003,RF-1002,2026-09-05,2026-09-14,DTC,US,S,content,The shade is darker than the product page,128.00
+RET-0004,RF-1003,2026-09-07,2026-09-19,Wholesale,US,XL,quality,Shell did not perform in heavy rain,178.00
+RET-0005,RF-1004,2026-09-10,2026-09-18,DTC,US,M,size,Exchanged for one size up,68.00
+RET-0006,RF-1001,2026-09-12,2026-09-24,DTC,US,S,fit,Waistband rolls when running,98.00
