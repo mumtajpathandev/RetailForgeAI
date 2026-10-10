@@ -15,10 +15,10 @@ Open `http://localhost:3000/login` for the demo password flow. Demo credentials 
 
 This repository includes [`render.yaml`](render.yaml) for Render Web Service deployment. Render supports free Node web services, but free services sleep after inactivity and local files are ephemeral. For testing, demo fallback mode is acceptable; for persistent imports and live connectors, provide a managed MySQL/TiDB `DATABASE_URL` and production secrets.
 
-After the repository is published to GitHub, use the Render Blueprint deploy button with the repository URL:
+Use the published GitHub repository and the Render Blueprint deploy button with the repository URL:
 
 ```text
-https://render.com/deploy?repo=YOUR_GITHUB_REPOSITORY_URL
+https://render.com/deploy?repo=https://github.com/mumtajpathandev/RetailForgeAI
 ```
 
 Then add the environment values marked `sync: false`. Do not commit `.env` files or real credentials.
@@ -47,3 +47,7 @@ pnpm build
 ```
 
 The current test suite covers OAuth logout behavior, dashboard fallback, password verification, and signed password-session issuance.
+
+## Published repository
+
+GitHub: https://github.com/mumtajpathandev/RetailForgeAI
