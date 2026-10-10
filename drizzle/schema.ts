@@ -6,6 +6,8 @@ export const users = mysqlTable("users", {
   name: text("name"),
   email: varchar("email", { length: 320 }),
   loginMethod: varchar("loginMethod", { length: 64 }),
+  passwordHash: varchar("passwordHash", { length: 255 }),
+  mustResetPassword: int("mustResetPassword").default(0).notNull(),
   role: mysqlEnum("role", ["user", "admin"]).default("user").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
@@ -103,6 +105,21 @@ export const auditEvents = mysqlTable("auditEvents", {
   tenantCreatedIdx: index("audit_events_tenant_created_idx").on(table.tenantId, table.createdAt),
 }));
 
+export const importRuns = mysqlTable("importRuns", {
+  id: int("id").autoincrement().primaryKey(),
+  tenantId: int("tenantId").notNull(),
+  actorId: int("actorId"),
+  fileName: varchar("fileName", { length: 255 }).notNull(),
+  template: varchar("template", { length: 80 }).notNull(),
+  format: mysqlEnum("format", ["csv", "json"]).notNull(),
+  rowCount: int("rowCount").default(0).notNull(),
+  status: mysqlEnum("status", ["validated", "committed", "failed"]).default("validated").notNull(),
+  source: varchar("source", { length: 40 }).default("demo_upload").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, (table) => ({
+  tenantCreatedIdx: index("import_runs_tenant_created_idx").on(table.tenantId, table.createdAt),
+}));
+
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 export type Tenant = typeof tenants.$inferSelect;
@@ -110,3 +127,4 @@ export type Product = typeof products.$inferSelect;
 export type ReviewItem = typeof reviewItems.$inferSelect;
 export type Integration = typeof integrations.$inferSelect;
 export type Activity = typeof activities.$inferSelect;
+export type ImportRun = typeof importRuns.$inferSelect;

@@ -1,7 +1,7 @@
 import { and, desc, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { ENV } from "./_core/env";
-import { activities, Activity, InsertUser, integrations, Integration, products, Product, reviewItems, ReviewItem, users } from "../drizzle/schema";
+import { activities, Activity, importRuns, ImportRun, InsertUser, integrations, Integration, products, Product, reviewItems, ReviewItem, users } from "../drizzle/schema";
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
@@ -43,6 +43,29 @@ export async function getUserByOpenId(openId: string) {
   if (!db) return undefined;
   const result = await db.select().from(users).where(eq(users.openId, openId)).limit(1);
   return result[0];
+}
+
+export async function createImportRun(input: {
+  tenantId: number;
+  actorId?: number;
+  fileName: string;
+  template: string;
+  format: "csv" | "json";
+  rowCount: number;
+  status?: "validated" | "committed" | "failed";
+}) {
+  const db = await getDb();
+  if (!db) return { ...input, id: -Date.now(), source: "demo_upload" };
+  const result = await db.insert(importRuns).values({
+    tenantId: input.tenantId, actorId: input.actorId, fileName: input.fileName, template: input.template, format: input.format, rowCount: input.rowCount, status: input.status ?? "validated", source: "demo_upload",
+  });
+  return { id: Number(result[0].insertId), ...input, source: "demo_upload" };
+}
+
+export async function listImportRuns(tenantId: number): Promise<ImportRun[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(importRuns).where(eq(importRuns.tenantId, tenantId)).orderBy(desc(importRuns.createdAt)).limit(20);
 }
 
 export type DashboardData = {

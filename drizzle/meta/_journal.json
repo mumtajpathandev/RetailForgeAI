@@ -15,6 +15,13 @@
       "when": 1791356378269,
       "tag": "0001_tranquil_franklin_richards",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1791517262931,
+      "tag": "0002_heavy_bloodstrike",
+      "breakpoints": true
     }
   ]
 }

@@ -7,6 +7,7 @@ import { SignJWT, jwtVerify } from "jose";
 import type { User } from "../../drizzle/schema";
 import * as db from "../db";
 import { ENV } from "./env";
+import { getDemoUserByOpenId } from "../passwordAuth";
 import type {
   ExchangeTokenRequest,
   ExchangeTokenResponse,
@@ -286,6 +287,10 @@ class SDKServer {
     }
 
     const sessionUserId = session.openId;
+    if (sessionUserId.startsWith("demo:")) {
+      const demoUser = getDemoUserByOpenId(sessionUserId);
+      if (demoUser) return demoUser;
+    }
     const signedInAt = new Date();
     let user = await db.getUserByOpenId(sessionUserId);
 

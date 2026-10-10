@@ -1,6 +1,8 @@
 # RetailForge AI Demo Credentials
 
-These accounts are for **local/demo environments only**. They are not active production accounts, and the current RetailForge AI foundation uses Manus OAuth rather than username/password authentication.
+These accounts are for **demo environments only**. They are intentionally non-production credentials for testing the password-login flow and role-aware workspace UI.
+
+Open `/login`, choose a role account, and sign in with the matching email and temporary password.
 
 | Role | Username | Temporary password |
 |---|---|---|
@@ -12,8 +14,16 @@ These accounts are for **local/demo environments only**. They are not active pro
 | Sourcing manager | `sourcing.manager@demo.retailforge.local` | `RF-Demo-Sourcing-2026!` |
 | Analyst | `analyst@demo.retailforge.local` | `RF-Demo-Analyst-2026!` |
 | Reviewer | `reviewer@demo.retailforge.local` | `RF-Demo-Reviewer-2026!` |
-| Read-only viewer | `read-only.viewer@demo.retailforge.local` | `RF-Demo-Viewer-2026!` |
+| Read-only viewer | `viewer@demo.retailforge.local` | `RF-Demo-Viewer-2026!` |
 
-## Safety rules
+## What is active
 
-Do not seed these accounts into production, do not use real email addresses, and do not commit plaintext passwords into application code. A password-auth implementation must store only strong password hashes, rate-limit login attempts, support secure reset flows, and force a password change at first login. The current demo uses a role simulator in the workspace sidebar and the `/access` screen; OAuth remains the actual sign-in path until password authentication is explicitly implemented.
+- Password sign-in issues the same signed, HTTP-only session-cookie format used by the OAuth session flow.
+- OAuth remains available as an alternate sign-in method.
+- Demo accounts are recognized server-side and are never sent to the browser as a password list.
+- Import commits are persisted as tenant-scoped `importRuns` records with file name, template, format, row count, status, source, and timestamp.
+- Mock imports are explicitly marked `demo_upload`; they are not silently treated as live production data.
+
+## Production hardening still required
+
+Before production use, replace these demo accounts with managed identity or real user records and add password reset, first-login change, MFA, login rate limiting, lockout, email verification, secret rotation, and security-event monitoring. Never reuse these credentials or commit them to a production environment.
